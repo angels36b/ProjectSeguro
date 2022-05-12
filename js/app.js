@@ -13,7 +13,7 @@ UI.prototype.llenarOpciones = ()=>{
     const max = new Date().getFullYear(),
           min = max - 20;
 
-    const selectYear = document.createElement('#year');
+    const selectYear = document.querySelector('#year');
 
     for(let i = max ; i > min; i--){
         // crea elemento desplegable con opciones del a;o

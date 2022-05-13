@@ -22,6 +22,8 @@ UI.prototype.llenarOpciones = ()=>{
     }
 }
 
+
+
 // instancia UI
 const ui = new UI();
 // console.log(ui)
@@ -31,6 +33,29 @@ document.addEventListener('DOMContentLoaded',()=>{
 })
 
 // validacion del formulario/ los selectores no agregarlos en un prototype
+
+UI.prototype.mostrarMensaje = function (mensaje, tipo){
+    const div = document.createElement('div');
+
+    if(tipo === 'error'){
+        div.classList.add ('mensaje', 'error');
+    }else {
+        div.classList.add ('mensaje', 'correcto');
+    }
+        div.classList.add('mensaje', 'mt-10')
+        div.textContent = mensaje;
+
+        //insertar en el HTML
+const formulario = document.querySelector('#cotizar-seguro');
+formulario.insertBefore(div, document.querySelector('#resultado'))
+
+setTimeout(()=>{
+    div.remove();
+},3000)
+
+}
+
+
 
 eventListeners();
 function eventListeners(){
@@ -54,10 +79,10 @@ console.log(tipo);
 
 
 if (marca === '' || year === '' || tipo === ''){
-    console.log('No paso la validacion')
+    ui.mostrarMensaje('Todos los campos son obligatorios', 'error')
 }else{
-    console.log('Si paso la validacion..')
+    ui.mostrarMensaje('Eureca..', 'correcto' )
 }
 
-    console.log('Cotizando...')
+    
 }
